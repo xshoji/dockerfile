@@ -1,0 +1,13 @@
+version: '2'
+services:
+    db:
+        image: nsgeorge/oracle-xe-11g
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: oraclexe11g
+        ports:
+            - "2222:22"
+            - "11521:1521"
+        volumes:
+            - .:/opt

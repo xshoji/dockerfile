@@ -1,0 +1,5 @@
+.idea
+nbproject
+.swp
+.DS_Store
+*/docker-compose.yml

@@ -1,0 +1,11 @@
+version: '2'
+services:
+    webserver:
+        image: nsgeorge/alpine-php7:0.1
+        container_name: alpine-php7
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - /host/dir:/containr/dir
+        tty: true

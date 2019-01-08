@@ -1,0 +1,30 @@
+version: '2'
+services:
+    prometheus:
+        image: nsgeorge/alpine-prometheus:0.1
+        container_name: alpine-prometheus
+        build:
+            context: .
+            dockerfile: prometheus/Dockerfile
+        ports:
+            # > Prometheusをインストールして、サーバ のメトリクスを取得してみる - Fire Engine
+            # > https://blog.tsurubee.tech/entry/2018/03/14/082536
+            # http://localhost:19090/graph
+            - "19090:9090"
+        networks:
+            - my_network
+        #  - [docker-compose up したコンテナを起動させ続ける方法 - Qiita](https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167)
+        tty: true
+    grafana:
+        image: grafana/grafana
+        container_name: grafana
+        ports:
+            # > Getting Started ｜ Grafana Documentation
+            # > http://docs.grafana.org/guides/getting_started/#logging-in-for-the-first-time
+            # http://localhost:13000 / user:admin, pass:admin
+            - "13000:3000"
+        networks:
+            - my_network
+        tty: true
+networks:
+  my_network:

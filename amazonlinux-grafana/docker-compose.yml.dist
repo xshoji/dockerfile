@@ -1,0 +1,21 @@
+version: '2'
+services:
+    amazonlinux:
+        image: nsgeorge/amazonlinux-grafana:0.1
+        container_name: amazonlinux-grafana
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            # > Getting Started ｜ Grafana Documentation
+            # > http://docs.grafana.org/guides/getting_started/#logging-in-for-the-first-time
+            # http://localhost:3333 / user:admin, pass:admin
+            - "3333:3000"
+            # > Prometheusをインストールして、サーバのメトリクスを取得してみる - Fire Engine
+            # > https://blog.tsurubee.tech/entry/2018/03/14/082536
+            # http://localhost:19090/graph
+            - "19090:9090"
+            # for java app
+            - "18080:8080"
+        #  - [docker-compose up したコンテナを起動させ続ける方法 - Qiita](https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167)
+        tty: true

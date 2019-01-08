@@ -1,0 +1,13 @@
+version: '2'
+services:
+    webserver:
+        image: nsgeorge/amazonlinux-apache24-php7:0.1
+        container_name: amazonlinux_apache_php7
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "2222:22"
+            - "8080:80"
+        volumes:
+            - /tmp:/opt
