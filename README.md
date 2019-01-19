@@ -21,7 +21,7 @@ docker run -id --name gab1.1 -p 8888:8080 -v .:/opt/gab -v /opt/gab/node_modules
 ### Enter a container
 
 ```
-docker exec -it ${container_name} /bin/bash
+docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it ${container_name} /bin/bash
 ```
 
 ### Create container by docker-compose
