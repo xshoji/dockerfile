@@ -35,7 +35,7 @@ docker-compose up -d --build
 Delete containers
 
 ```
-docker-compose down -d
+docker-compose down
 ```
 
 Stop containers
