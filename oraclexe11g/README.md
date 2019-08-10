@@ -38,6 +38,8 @@ deb http://us.archive.ubuntu.com/ubuntu vivid main universe
 ```
 # echo 'alias sqlplus="rlwrap /u01/app/oracle/product/11.2.0/xe/bin/sqlplus"' >> ~/.bashrc
 # sqlplus system/oracle@xe
+// passwordの変更
+# ALTER USER system IDENTIFIED BY "oracle2";
 ```
 
 # knowledge
