@@ -1,4 +1,5 @@
 # Base image
+# required: $ docker login
 FROM christophesurmont/oracle-xe-11g
 
 # - [ubuntu - Non-interactive method for dpkg-reconfigure tzdata - Stack Overflow](https://stackoverflow.com/questions/8671308/non-interactive-method-for-dpkg-reconfigure-tzdata/47909037#47909037)
