@@ -6,7 +6,7 @@ RUN apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
 
 # install utils
 RUN apt-get install -y \
-    wget \
+    curl \
     less \
     vim \
     zip \
