@@ -1,7 +1,7 @@
 version: '2'
 services:
     ubuntu:
-        image: nsgeorge/ubuntu:0.1
+        image: xshoji/ubuntu:0.1
         container_name: ubuntu
         build:
             context: .

@@ -1,7 +1,7 @@
 version: '2'
 services:
     db:
-        image: nsgeorge/oracle-xe-11g
+        image: xshoji/oracle-xe-11g
         build:
             context: .
             dockerfile: Dockerfile

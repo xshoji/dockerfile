@@ -7,7 +7,7 @@ mac上にて
 
 ```
 $ docker login
-nsgeorge
+xshoji
 password
 ```
 

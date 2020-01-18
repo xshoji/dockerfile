@@ -1,7 +1,7 @@
 version: '2'
 services:
     webserver:
-        image: nsgeorge/amazonlinux-apache24-php7:0.1
+        image: xshoji/amazonlinux-apache24-php7:0.1
         container_name: amazonlinux_apache_php7
         build:
             context: .

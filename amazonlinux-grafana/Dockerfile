@@ -1,5 +1,5 @@
 # Base image
-FROM nsgeorge/amazonlinux:0.1
+FROM xshoji/amazonlinux:0.1
 
 # > Installing on RPM-based Linux ｜ Grafana Documentation
 # > http://docs.grafana.org/installation/rpm/

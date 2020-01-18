@@ -1,7 +1,7 @@
 version: '2'
 services:
     amazonlinux:
-        image: nsgeorge/amazonlinux:0.1
+        image: xshoji/amazonlinux:0.1
         container_name: amazonlinux
         build:
             context: .

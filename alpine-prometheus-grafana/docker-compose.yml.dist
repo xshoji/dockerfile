@@ -1,7 +1,7 @@
 version: '2'
 services:
     prometheus:
-        image: nsgeorge/alpine-prometheus:0.1
+        image: xshoji/alpine-prometheus:0.1
         container_name: alpine-prometheus
         build:
             context: .

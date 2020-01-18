@@ -1,5 +1,5 @@
 # Base image
-FROM nsgeorge/amazonlinux:0.1
+FROM xshoji/amazonlinux:0.1
 
 # add epel repository
 # @see 外部yumリポジトリの利用 - Qiita https://qiita.com/wwwaltz/items/deb55ccf546761994ef5

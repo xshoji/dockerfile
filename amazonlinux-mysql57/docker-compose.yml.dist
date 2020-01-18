@@ -1,7 +1,7 @@
 version: '2'
 services:
     db:
-        image: nsgeorge/amazonlinux-mysql57:0.1
+        image: xshoji/amazonlinux-mysql57:0.1
         container_name: amazonlinux_mysql57
         build:
             context: .

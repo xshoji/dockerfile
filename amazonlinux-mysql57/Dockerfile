@@ -1,5 +1,5 @@
 # Base image
-FROM nsgeorge/amazonlinux:0.1
+FROM xshoji/amazonlinux:0.1
 
 # update yum
 RUN yum -y install http://dev.mysql.com/get/mysql57-community-release-el6-7.noarch.rpm \
