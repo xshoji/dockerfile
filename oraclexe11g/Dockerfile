@@ -19,5 +19,8 @@ RUN mkdir -p /run/sshd
 ## cleanup of files from setup
 RUN rm -rf /tmp/*
 
-CMD /usr/sbin/startup.sh && /usr/sbin/sshd -D
+# overwrite startup.sh
+COPY scripts/startup.sh /usr/sbin/startup.sh
+RUN chmod 700 /usr/sbin/startup.sh
 
+CMD /usr/sbin/startup.sh && /usr/sbin/sshd -D
