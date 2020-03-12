@@ -21,6 +21,7 @@ docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it oraclexe11g /bi
 
 // run script
 cd /tmp
+export DBUSER=system; export DBPASS=oracle; export DBSID=xe; export DBSCHEMA=system
 ./oraql.sh -q "SELECT D_OBJ#, D_TIMESTAMP FROM SYS.DEPENDENCY\$ LIMIT 5;"
 ```
 
