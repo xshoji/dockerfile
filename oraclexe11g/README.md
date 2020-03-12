@@ -14,6 +14,17 @@ SQL>
  - sid: xe
  - schema: system
 
+# ORA-28002: the password will expire within 7 days
+
+> ぼちぼちやります。： ORA-28002 が出たら  
+> http://bochi.vyw.jp/2014/07/ora-28002.html
+
+```
+sqlplus system/oracle@xe
+alter profile default limit password_life_time unlimited;
+alter user system identified by oracle;
+```
+
 # いろいろ設定を追加
 
 ```
