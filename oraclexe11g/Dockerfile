@@ -12,7 +12,7 @@ RUN echo "tzdata tzdata/Areas select Asia" > /tmp/preseed.txt; \
     echo "tzdata tzdata/Zones/Asia select Tokyo" >> /tmp/preseed.txt; \
     debconf-set-selections /tmp/preseed.txt && \
     apt-get update && \
-    apt-get install -y tzdata vim curl less openssh-server bsdmainutils
+    apt-get install -y tzdata vim curl less openssh-server bsdmainutils man
 
 RUN mkdir -p /run/sshd
 
