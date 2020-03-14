@@ -1,10 +1,10 @@
 version: '2'
 services:
-    db:
-        image: store/oracle/database-enterprise:12.1.0.2
-        container_name: oracle12
-        env_file:
-            - ./db_env.dat
-        ports:
-            - "1527:1521"
-            - "5507:5500"
+  db:
+    image: store/oracle/database-enterprise:12.1.0.2
+    container_name: oracle12
+    env_file:
+      - ./db_env.dat
+    ports:
+      - "1527:1521"
+      - "5507:5500"
