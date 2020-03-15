@@ -1,13 +1,7 @@
 # Base image
-FROM alpine:3.7
+FROM xshoji/alpine3:0.1
 
-RUN apk update \
-  && apk upgrade \
-  && apk add \
-  bash \
-  curl \
-  less \
-  vim \
+RUN apk add \
   php7 \
   php7-openssl \
   php7-json \
@@ -27,7 +21,5 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php composer-setup.php \
   && mv composer.phar /usr/local/bin/composer \
 ;
-
-COPY ./commonfiles/bashrc /root/.bashrc
 
 ENTRYPOINT ["/bin/bash"]

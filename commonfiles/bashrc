@@ -34,6 +34,8 @@ export LESS='-M'
 #----------------------------
 
 # [root@amazonlinux /home/user]$ のフォーマット
+# > CLI 環境変数 — Docker-docs-ja 17.06.Beta ドキュメント
+# > http://docs.docker.jp/compose/reference/envvars.html#compose-project-name
 PS1='[\u@$(echo ${COMPOSE_PROJECT_NAME}) $PWD]\$ '
 
 #----------------------------

@@ -1,10 +1,11 @@
 version: '2'
 services:
-  prometheus:
-    image: xshoji/alpine-prometheus:0.1
+  # prometheus container
+  p:
+    image: xshoji/alpine3-prometheus:0.1
     build:
-      context: .
-      dockerfile: prometheus/Dockerfile
+      context: ../
+      dockerfile: ./alpine3-prometheus-grafana/prometheus/Dockerfile
     ports:
       # > Prometheusをインストールして、サーバ のメトリクスを取得してみる - Fire Engine
       # > https://blog.tsurubee.tech/entry/2018/03/14/082536
@@ -14,7 +15,9 @@ services:
       - my_network
     #  - [docker-compose up したコンテナを起動させ続ける方法 - Qiita](https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167)
     tty: true
-  grafana:
+
+  # grafana container
+  g:
     image: grafana/grafana
     ports:
       # > Getting Started ｜ Grafana Documentation
@@ -24,8 +27,6 @@ services:
     networks:
       - my_network
     tty: true
-    environment:
-      COMPOSE_PROJECT_NAME: alpine-prometheus-grafana
 
 networks:
   my_network:

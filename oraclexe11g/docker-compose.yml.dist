@@ -17,4 +17,3 @@ services:
       DBSID: xe
       DBSCHEMA: system
       ORACLE_ALLOW_PASS_LIFE_UNLIMITED: true
-      COMPOSE_PROJECT_NAME: oraclexe11g
