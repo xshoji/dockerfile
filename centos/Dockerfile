@@ -7,7 +7,8 @@ RUN yum update -y \
   && yum install -y \
     curl \
     less \
-    vi \
+    vim \
+    diffutils \
   && yum clean all \
 ;
 

@@ -10,6 +10,7 @@ RUN yum update -y \
       curl \
       less \
       vim \
+      diffutils \
   && yum clean all \
 ;
 
