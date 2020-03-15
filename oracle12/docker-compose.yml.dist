@@ -5,3 +5,5 @@ services:
     ports:
       - "1527:1521"
       - "5507:5500"
+    environment:
+      COMPOSE_PROJECT_NAME: oracle12

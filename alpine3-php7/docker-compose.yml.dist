@@ -9,3 +9,5 @@ services:
     volumes:
       - /tmp:/tmp
     tty: true
+    environment:
+      COMPOSE_PROJECT_NAME: alpine3-php7

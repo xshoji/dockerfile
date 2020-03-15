@@ -11,3 +11,5 @@ services:
       - "13306:3306"
       - "10050:10050"
     tty: true
+    environment:
+      COMPOSE_PROJECT_NAME: amazonlinux-mysql57

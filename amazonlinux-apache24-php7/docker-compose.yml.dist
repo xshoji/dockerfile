@@ -11,3 +11,5 @@ services:
       - "8080:80"
     volumes:
       - /tmp:/opt
+    environment:
+      COMPOSE_PROJECT_NAME: amazonlinux-apache24-php7
