@@ -20,7 +20,9 @@ RUN mkdir -p /run/sshd
 RUN rm -rf /tmp/*
 
 # overwrite startup.sh
-COPY scripts/startup.sh /usr/sbin/startup.sh
+COPY ./oraclexe11g/scripts/startup.sh /usr/sbin/startup.sh
 RUN chmod 700 /usr/sbin/startup.sh
+
+COPY ./commonfiles/bashrc /root/.bashrc
 
 CMD /usr/sbin/startup.sh && /usr/sbin/sshd -D

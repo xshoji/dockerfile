@@ -28,4 +28,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && mv composer.phar /usr/local/bin/composer \
 ;
 
+COPY ./commonfiles/bashrc /root/.bashrc
+
 ENTRYPOINT ["/bin/bash"]

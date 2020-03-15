@@ -12,7 +12,9 @@ RUN mkdir -p /usr/local/src/prometheus \
   && tar zxvf prometheus-2.2.0.linux-amd64.tar.gz \
   && rm prometheus-2.2.0.linux-amd64.tar.gz \
 ;
-ADD ./prometheus/prometheus.yml /usr/local/src/prometheus/prometheus-2.2.0.linux-amd64/prometheus.yml
+ADD ./alpine-prometheus-grafana/prometheus/prometheus.yml /usr/local/src/prometheus/prometheus-2.2.0.linux-amd64/prometheus.yml
+
+COPY ./commonfiles/bashrc /root/.bashrc
 
 # ENTRYPOINT ["/bin/bash"]
 ENTRYPOINT ["/usr/local/src/prometheus/prometheus-2.2.0.linux-amd64/prometheus", "--config.file=/usr/local/src/prometheus/prometheus-2.2.0.linux-amd64/prometheus.yml"]

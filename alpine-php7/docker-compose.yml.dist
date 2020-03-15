@@ -1,11 +1,14 @@
 version: '2'
 services:
-  webserver:
+  # web-server container
+  c:
     image: xshoji/alpine-php7:0.1
-    container_name: alpine-php7
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../
+      dockerfile: ./alpine-php7/Dockerfile
     volumes:
-      - /host/dir:/containr/dir
+      # /host/dir:/containr/dir
+      - /tmp:/tmp
     tty: true
+    environment:
+      COMPOSE_PROJECT_NAME: alpine-php7

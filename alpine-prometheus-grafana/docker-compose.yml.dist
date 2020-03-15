@@ -2,7 +2,6 @@ version: '2'
 services:
   prometheus:
     image: xshoji/alpine-prometheus:0.1
-    container_name: alpine-prometheus
     build:
       context: .
       dockerfile: prometheus/Dockerfile
@@ -17,7 +16,6 @@ services:
     tty: true
   grafana:
     image: grafana/grafana
-    container_name: grafana
     ports:
       # > Getting Started ｜ Grafana Documentation
       # > http://docs.grafana.org/guides/getting_started/#logging-in-for-the-first-time
@@ -26,5 +24,8 @@ services:
     networks:
       - my_network
     tty: true
+    environment:
+      COMPOSE_PROJECT_NAME: alpine-prometheus-grafana
+
 networks:
   my_network:

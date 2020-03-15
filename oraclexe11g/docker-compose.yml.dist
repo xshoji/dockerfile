@@ -1,19 +1,20 @@
 version: '2'
 services:
-  db:
+  # database container
+  d:
     image: xshoji/oracle-xe-11g
     build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: oraclexe11g
+      context: ../
+      dockerfile: ./oraclexe11g/Dockerfile
     ports:
       - "2222:22"
       - "11521:1521"
-    volumes:
-      - .:/opt
+#    volumes:
+#      - .:/opt
     environment:
-      - DBUSER=system
-      - DBPASS=oracle
-      - DBSID=xe
-      - DBSCHEMA=system
-      - ORACLE_ALLOW_PASS_LIFE_UNLIMITED=true
+      DBUSER: system
+      DBPASS: oracle
+      DBSID: xe
+      DBSCHEMA: system
+      ORACLE_ALLOW_PASS_LIFE_UNLIMITED: true
+      COMPOSE_PROJECT_NAME: oraclexe11g

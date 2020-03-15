@@ -17,7 +17,9 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && pip install supervisor \
     && mkdir -p /var/log/supervisor \
 ;
-ADD ./supervisord.conf /etc/supervisord.conf
+ADD ./amazonlinux-apache24-php7/supervisord.conf /etc/supervisord.conf
+
+COPY ./commonfiles/bashrc /root/.bashrc
 
 EXPOSE 22 80
 

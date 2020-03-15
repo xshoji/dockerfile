@@ -1,0 +1,73 @@
+
+#----------------------------
+# Global common settings
+#----------------------------
+# ls color
+# > Add Color to the Terminal in Mac OS X
+# > http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
+export CLICOLOR=1
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
+#----------------------------
+# Application settings
+#----------------------------
+
+# Set history environment
+# Set row limit
+HISTSIZE=50000
+# Set display format
+HISTTIMEFORMAT='%Y-%m-%d %T '
+# Ignore duplicated history
+HISTCONTROL=ignoredups:ignorespace
+# Ignore string
+HISTIGNORE='ll:'
+
+# Set default editor
+export EDITOR=vim
+
+# Display file name and row number on less
+# エンジニアなら知っておきたい lessコマンドtips 11選 - Qiita http://qiita.com/ine1127/items/64b5b6cf52471c3fe59c
+export LESS='-M'
+
+#----------------------------
+# PS1 Settings
+#----------------------------
+
+# [root@amazonlinux /home/user]$ のフォーマット
+PS1='[\u@$(echo ${COMPOSE_PROJECT_NAME}) $PWD]\$ '
+
+#----------------------------
+# Command alias list
+#----------------------------
+alias mv='mv -i -v'
+alias tailf='tail -f'
+
+# Wokashi: Mac OS Xのlsで色を付ける http://mironal-memo.blogspot.jp/2012/09/macosx-ls.html
+case "${OSTYPE}" in
+darwin*)
+  alias ls="ls -G"
+  ;;
+linux*)
+  alias ls='ls --color'
+  ;;
+esac
+
+
+
+#----------------------------
+# Other settings
+#----------------------------
+
+# Share command history
+# via@http://iandeth.dyndns.org/mt/ian/archives/000651.html
+function share_history {
+    history -a
+    history -c
+    history -r
+}
+PROMPT_COMMAND='share_history'
+shopt -u histappend
+export HISTSIZE=9999
+# Back previous history by Ctrl+s http://d.hatena.ne.jp/poch-7003/20090927/1254034581
+stty stop undef
+stty start undef

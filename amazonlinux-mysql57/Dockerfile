@@ -11,4 +11,6 @@ RUN yum -y install http://dev.mysql.com/get/mysql57-community-release-el6-7.noar
    && echo "skip-grant-tables" >> /etc/my.cnf \
 ;
 
+COPY ./commonfiles/bashrc /root/.bashrc
+
 ENTRYPOINT /etc/init.d/mysqld start && /bin/bash

@@ -12,4 +12,6 @@ RUN yum update -y \
   && yum clean all \
 ;
 
+COPY ./commonfiles/bashrc /root/.bashrc
+
 CMD ["/bin/bash"]

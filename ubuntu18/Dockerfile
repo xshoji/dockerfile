@@ -14,4 +14,6 @@ RUN apt-get install -y \
     unzip \
 ;
 
+COPY ./commonfiles/bashrc /root/.bashrc
+
 CMD ["/bin/bash"]
