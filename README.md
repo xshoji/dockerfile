@@ -3,19 +3,27 @@
 
 My private dockerfiles.
 
-# Memo
-
-### Create container and enter the container
+# docker-compose memo
 
 ```
-docker exec --name ${container_name} -it ${container_image_name}:${version} /bin/bash
-docker exec --name test -it mywebapp_java:0.1 /bin/bash
+# Create container and run
+docker-compose up -d
+# Create container and run with rebuild
+docker-compose up -d --build
+
+# Delete container
+docker-compose down
+
+# Stop container
+docker-compose stop
 ```
 
-Bind directory
+# docker command memo
+
+### Bind directory
 
 ```
-docker run -id --name gab1.1 -p 8888:8080 -v .:/opt/gab -v /opt/gab/node_modules gab:1.1 /bin/bash
+docker run -id --name ${container_name} -p 8888:8080 -v /local/dir/path:/container/dir/path ${docker_image}:${image_version} /bin/bash
 ```
 
 ### Enter a container
@@ -24,31 +32,17 @@ docker run -id --name gab1.1 -p 8888:8080 -v .:/opt/gab -v /opt/gab/node_modules
 docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it ${container_name} /bin/bash
 ```
 
-### Create container by docker-compose
-
-Build and run as a daemon
-
-```
-docker-compose up -d --build
-```
-
-Delete containers
-
-```
-docker-compose down
-```
-
-Stop containers
-
-```
-docker-compose stop
-```
 
 ### Copy file to host from container
 
 ```
-docker cp ${container_name}:${container_file_path} ${host_file_path}
-docker cp apache_php7:/etc/supervisord.conf .
+# Copying files from container to local
+docker cp ${container_name}:${container_file_path} ${local_file_path}
+docker cp apache_php7:/tmp/file.txt ./file.txt 
+
+# Copying files from container to local
+docker cp ${local_file_path} ${container_name}:${container_file_path} 
+docker cp file.txt apache_php7:/tmp/file.txt
 ```
 
 ### Check container logs
@@ -69,4 +63,31 @@ docker rm -f ${container_name | container_hash_value}
 
 ```
 docker rmi -f ${image_hash_value}
+```
+
+
+# Useful function
+
+```
+# docker-compose down -> up -> exec to container in current directory.
+function docker-compose-rerun-exec() {
+  echo ">> docker-compose down ..."
+  docker-compose down
+  echo ">> docker-compose up ..."
+  docker-compose up -d
+  local CONTAINER_NAME=$(docker ps --filter name=${PWD##*/} --format "table {{.Names}}" |grep -v "NAMES" |head -n 1)
+  [[ "${CONTAINER_NAME}" == "" ]] && { echo "CONTAINER_NAME was not found."; return; }
+  echo ">> docker-compose exec to ${CONTAINER_NAME} ..."
+  docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it ${CONTAINER_NAME} /bin/bash
+}
+
+# docker-compose down -> remove image in current directory.
+function docker-remove-image() {
+  local IMAGE_NAME=$(docker ps -a --filter name=${PWD##*/} --format "table {{.Image}}" |grep -v "IMAGE" |head -n 1)
+  [[ ${IMAGE_NAME} == "" ]] && { echo "IMAGE_NAME was not found."; return; }
+  echo ">> docker-compose down ..."
+  docker-compose down
+  echo ">> docker rmi ${IMAGE_NAME} ..."
+  docker rmi ${IMAGE_NAME}
+}
 ```
