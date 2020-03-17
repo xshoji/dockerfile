@@ -10,7 +10,12 @@ RUN yum update -y \
       curl \
       less \
       vim \
+      # diff
       diffutils \
+      # column
+      util-linux \
+      # xargs, find
+      findutils \
   && yum clean all \
 ;
 

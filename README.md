@@ -65,6 +65,11 @@ docker rm -f ${container_name | container_hash_value}
 docker rmi -f ${image_hash_value}
 ```
 
+### Show docker Dockerfile history
+
+```
+docker history ${docker_image}:${image_version} --no-trunc --format '{{ json .CreatedBy }}'
+```
 
 # Useful function
 

@@ -1,9 +1,24 @@
 version: '2'
 services:
-  db:
+  # oracle database container
+  o:
     image: store/oracle/database-enterprise:12.2.0.1
     ports:
-      - "1527:1521"
-      - "5507:5500"
+      - "1521:1521"
+      - "5500:5500"
     environment:
       COMPOSE_PROJECT_NAME: oracle12
+  # sqlplus container
+  # $ sqlplus sys/Oradoc_db1@//192.168.240.3:1521/orclpdb1.localdomai
+  s:
+    image: xshoji/amazonlinuxsqlplus:0.1
+    build:
+      context: ../
+      dockerfile: ./amazonlinuxsqlplus/Dockerfile
+    #  - [docker-compose up したコンテナを起動させ続ける方法 - Qiita](https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167)
+    tty: true
+    environment:
+      COMPOSE_PROJECT_NAME: oracle12
+
+networks:
+  my_network:
