@@ -111,3 +111,53 @@ sqlplus system/oracle@xe
 alter profile default limit password_life_time unlimited;
 alter user system identified by oracle;
 ```
+
+# Query
+
+
+```
+-- 日付のフォーマット指定
+to_date('20171001 00:00:00', 'YYYYMMDD HH24:MI:SS')
+to_char(updated_on, 'YYYY-MM-DD HH24:MI:SS')
+
+-- 昨日の16:00
+SELECT TRUNC(SYSDATE - 1 ) + 16/24 FROM dual;
+
+-- 今日の15:59:59
+SELECT TRUNC(SYSDATE) + 16/24 - 1/86400 FROM dual;
+
+-- テーブルのインデックスを確認
+SELECT table_name, index_name, column_position, column_name FROM user_ind_columns WHERE table_name = 'TABLE_NAME' ORDER BY table_name, index_name, column_position;
+
+-- インデックスを指定して確認
+SELECT OWNER || CHR(9) || INDEX_NAME || CHR(9) || INDEX_TYPE || CHR(9) || TABLE_NAME FROM DBA_INDEXES WHERE OWNER = 'SCHEMA_NAME' AND INDEX_NAME = 'IDX_NAME';
+
+-- シーケンス確認
+select sequence_name || CHR(9) || last_number from dba_sequences order by sequence_name;
+select sequence_name, increment_by, min_value, cache_size, last_number from user_sequences where sequence_name = 'SEQ_NAME';
+
+-- テーブル一覧
+SELECT TABLE_NAME FROM DBA_TABLES WHERE OWNER='SCHEMA_NAME' AND TABLE_NAME LIKE '%AAA%';
+
+-- カラム一覧
+SELECT OWNER || CHR(9) || TABLE_NAME || CHR(9) || COLUMN_NAME || CHR(9) || DATA_TYPE || CHR(9) || DATA_LENGTH FROM DBA_TAB_COLUMNS WHERE OWNER = 'SCHEMA_NAME' AND TABLE_NAME = 'TABLE_NAME';
+
+-- SCHEMA_NAMEのテーブルへシノニムを張っている人
+SELECT OWNER ||CHR(9)||  TABLE_OWNER ||CHR(9)|| SYNONYM_NAME ||CHR(9)|| TABLE_NAME ||CHR(9)|| DB_LINK  FROM DBA_SYNONYMS WHERE TABLE_OWNER = 'SCHEMA_NAME' ORDER BY OWNER;
+
+-- SCHEMA_NAMEがどのテーブルへシノニムを張っているか
+SELECT OWNER ||CHR(9)||  TABLE_OWNER ||CHR(9)|| SYNONYM_NAME ||CHR(9)|| TABLE_NAME ||CHR(9)|| DB_LINK  FROM DBA_SYNONYMS WHERE OWNER = 'SCHEMA_NAME' ORDER BY TABLE_OWNER;
+
+-- クエリの実行時間測る
+SQL> set timing on;
+SQL> select xxxx
+...
+経過: 00:00:00.84
+SQL> set timing off;
+
+-- 一括Insertする
+INSERT ALL
+INTO tbl_hoge (id, name, age) VALUES (1, 'Michael', 55)
+INTO tbl_hoge (id, name, age) VALUES (2, 'Christopher', 77)
+SELECT * FROM DUAL;
+```
