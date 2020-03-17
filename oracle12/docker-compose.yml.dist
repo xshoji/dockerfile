@@ -19,6 +19,10 @@ services:
     tty: true
     environment:
       COMPOSE_PROJECT_NAME: oracle12
+      DBUSER: "sys"
+      DBPASS: "Oradoc_db1"
+      DBSID: "//192.168.240.3:1521/orclpdb1.localdomain as sysdba"
+      DBSCHEMA: "sys"
 
 networks:
   my_network:
