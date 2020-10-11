@@ -12,7 +12,7 @@ RUN yum install -y \
 ;
 
 # install supervisor
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+RUN curl -OL https://bootstrap.pypa.io/get-pip.py \
     && python get-pip.py \
     && pip install supervisor \
     && mkdir -p /var/log/supervisor \
