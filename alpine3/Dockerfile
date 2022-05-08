@@ -1,5 +1,5 @@
 # Base image
-FROM alpine:3.11.3
+FROM alpine:3.15.4
 
 # commands
 RUN apk update \
