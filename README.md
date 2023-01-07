@@ -74,16 +74,23 @@ docker history ${docker_image}:${image_version} --no-trunc --format '{{ json .Cr
 # Useful function
 
 ```
-# docker-compose down -> up -> exec to container in current directory.
-function docker-compose-rerun-exec() {
-  echo ">> docker-compose down ..."
-  docker-compose down
-  echo ">> docker-compose up ..."
-  docker-compose up -d
-  local CONTAINER_NAME=$(docker ps --filter name=${PWD##*/} --format "table {{.Names}}" |grep -v "NAMES" |head -n 1)
+# docker exec to container in current directory.
+function docker-compose-exec-current() {
+  local container_num="${1}"
+  [[ ${container_num} == "" ]] && { container_num="1"; }
+  local CONTAINER_NAME=$(docker ps --filter name=${PWD##*/} --format "table {{.Names}}" |grep -v "NAMES" |head -n ${container_num} |tail -n 1)
   [[ "${CONTAINER_NAME}" == "" ]] && { echo "CONTAINER_NAME was not found."; return; }
   echo ">> docker-compose exec to ${CONTAINER_NAME} ..."
   docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it ${CONTAINER_NAME} /bin/bash
+}
+
+# docker-compose down -> up -> exec to container in current directory.
+function docker-compose-rebuild-exec() {
+  echo ">> docker-compose down ..."
+  docker-compose down
+  echo ">> docker-compose up -d --build ..."
+  docker-compose up -d --build
+  docker-compose-exec-current
 }
 
 # docker-compose down -> remove image in current directory.
