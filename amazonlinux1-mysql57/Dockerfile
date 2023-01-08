@@ -4,6 +4,7 @@ FROM xshoji/amazonlinux1-aimless:0.1
 # update yum
 RUN yum clean all \
    && yum -y install https://dev.mysql.com/get/mysql57-community-release-el6-7.noarch.rpm \
+   # ［MySQL］ アップデート時にGPGキーのエラーで停止してしまう場合 https://blog.katsubemakito.net/mysql/mysql-update-error-gpg
    && rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 \
    && yum -y install mysql-community-server \
    && chkconfig mysqld on \
