@@ -2,14 +2,14 @@ version: '2'
 services:
   # container
   c:
-    image: xshoji/ubuntu18:0.1
+    image: xshoji/rockylinux9:0.1
     build:
       context: ../
-      dockerfile: ./ubuntu18/Dockerfile
+      dockerfile: ./rockylinux9/Dockerfile
     volumes:
       # host-dir:container-dir
       - /tmp:/mactmp
     # docker-compose up したコンテナを起動させ続ける方法 - Qiita https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167
     tty: true
     environment:
-      COMPOSE_PROJECT_NAME: ubuntu18
+      COMPOSE_PROJECT_NAME: rockylinux9
