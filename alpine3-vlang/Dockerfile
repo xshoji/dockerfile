@@ -1,6 +1,6 @@
 # > v/Dockerfile.alpine at master · vlang/v  
 # > https://github.com/vlang/v/blob/master/Dockerfile.alpine  
-FROM alpine:3.15.4
+FROM xshoji/alpine3-aimless:0.1
 
 WORKDIR /opt/vlang
 
@@ -34,4 +34,4 @@ RUN if [[ -z "${USE_LOCAL}" ]] ; then \
 
 RUN make && v -version
 
-CMD ["v"]
+ENTRYPOINT ["/bin/bash"]

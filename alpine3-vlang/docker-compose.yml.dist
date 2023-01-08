@@ -2,12 +2,13 @@ version: '2'
 services:
   # container
   c:
-    image: xshoji/alpine-vlang3:0.1
+    image: xshoji/alpine3-vlang:0.1
     build:
       context: ../
       dockerfile: ./alpine3-vlang/Dockerfile
     volumes:
-      - /tmp:/tmp
+      # host-dir:container-dir
+      - /tmp:/mactmp
     tty: true
     environment:
       COMPOSE_PROJECT_NAME: alpine3-vlang

@@ -95,11 +95,11 @@ function docker-compose-rebuild-exec() {
 
 # docker-compose down -> remove image in current directory.
 function docker-remove-image() {
-  local IMAGE_NAME=$(docker ps -a --filter name=${PWD##*/} --format "table {{.Image}}" |grep -v "IMAGE" |head -n 1)
-  [[ ${IMAGE_NAME} == "" ]] && { echo "IMAGE_NAME was not found."; return; }
+  local IMAGE_ID=$(docker images |grep ${PWD##*/} |awk '{ print $3 }')
+  [[ ${IMAGE_ID} == "" ]] && { echo "IMAGE was not found."; return; }
   echo ">> docker-compose down ..."
   docker-compose down
-  echo ">> docker rmi ${IMAGE_NAME} ..."
-  docker rmi ${IMAGE_NAME}
+  echo ">> docker rmi ${IMAGE_ID} ..."
+  docker rmi -f ${IMAGE_ID}
 }
 ```

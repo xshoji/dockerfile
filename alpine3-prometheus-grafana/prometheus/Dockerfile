@@ -1,5 +1,5 @@
 # Base image
-FROM xshoji/alpine3:0.1
+FROM xshoji/alpine3-aimless:0.1
 
 RUN mkdir -p /usr/local/src/prometheus \
   && cd /usr/local/src/prometheus \

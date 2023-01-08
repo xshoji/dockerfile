@@ -2,7 +2,7 @@ version: '2'
 services:
   # prometheus container
   p:
-    image: xshoji/alpine3-prometheus:0.1
+    image: xshoji/alpine3-prometheus-grafana:0.1
     build:
       context: ../
       dockerfile: ./alpine3-prometheus-grafana/prometheus/Dockerfile

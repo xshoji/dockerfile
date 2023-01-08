@@ -2,12 +2,13 @@ version: '2'
 services:
   # php container
   p:
-    image: xshoji/alpine-php7:0.1
+    image: xshoji/alpine3-php7:0.1
     build:
       context: ../
       dockerfile: ./alpine3-php7/Dockerfile
     volumes:
-      - /tmp:/tmp
+      # host-dir:container-dir
+      - /tmp:/mactmp
     tty: true
     environment:
       COMPOSE_PROJECT_NAME: alpine3-php7
