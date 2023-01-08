@@ -1,15 +1,15 @@
 # Base image
-FROM centos:8.1.1911
+FROM centos:7.9.2009
 
-# update dnf / timezone / install utils
-RUN dnf update -y \
+# update yum / timezone / install utils
+RUN yum update -y \
   && cp -p /usr/share/zoneinfo/Japan /etc/localtime \
-  && dnf install -y \
+  && yum install -y \
     curl \
     less \
     vim \
     diffutils \
-  && dnf clean all \
+  && yum clean all \
 ;
 
 COPY ./commonfiles/bashrc /root/.bashrc
