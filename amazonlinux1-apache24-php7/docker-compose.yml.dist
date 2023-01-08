@@ -1,0 +1,16 @@
+version: '2'
+services:
+  # webserver
+  w:
+    image: xshoji/amazonlinux1-apache24-php7:0.1
+    build:
+      context: ../
+      dockerfile: ./amazonlinux1-apache24-php7/Dockerfile
+    ports:
+      - "2222:22"
+      - "8080:80"
+    volumes:
+      # host-dir:container-dir
+      - /tmp:/mactmp
+    environment:
+      COMPOSE_PROJECT_NAME: amazonlinux1-apache24-php7

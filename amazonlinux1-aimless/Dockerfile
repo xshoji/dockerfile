@@ -1,5 +1,5 @@
 # Base image
-FROM amazonlinux:2018.03.0.20180424
+FROM amazonlinux:2018.03.0.20221209.1
 
 # timezone
 RUN cp -p /usr/share/zoneinfo/Japan /etc/localtime

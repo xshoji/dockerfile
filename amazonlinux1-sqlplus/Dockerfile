@@ -1,5 +1,5 @@
 # Base image
-FROM xshoji/amazonlinux:0.1
+FROM xshoji/amazonlinux1-aimless:0.1
 
 RUN yum install -y libaio
 

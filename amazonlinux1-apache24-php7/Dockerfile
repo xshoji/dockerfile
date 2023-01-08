@@ -1,9 +1,9 @@
 # Base image
-FROM xshoji/amazonlinux:0.1
+FROM xshoji/amazonlinux1-aimless:0.1
 
 # add epel repository
 # @see 外部yumリポジトリの利用 - Qiita https://qiita.com/wwwaltz/items/deb55ccf546761994ef5
-RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+RUN rpm -ivh https://archives.fedoraproject.org/pub/archive/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
 # install php, apache
 RUN yum install -y \
@@ -12,12 +12,12 @@ RUN yum install -y \
 ;
 
 # install supervisor
-RUN curl -OL https://bootstrap.pypa.io/get-pip.py \
+RUN curl -OL https://bootstrap.pypa.io/pip/2.7/get-pip.py \
     && python get-pip.py \
     && pip install supervisor \
     && mkdir -p /var/log/supervisor \
 ;
-ADD ./amazonlinux-apache24-php7/supervisord.conf /etc/supervisord.conf
+ADD ./amazonlinux1-apache24-php7/supervisord.conf /etc/supervisord.conf
 
 COPY ./commonfiles/bashrc /root/.bashrc
 

@@ -2,10 +2,10 @@ version: '2'
 services:
   # grafana
   g:
-    image: xshoji/amazonlinux-grafana:0.1
+    image: xshoji/amazonlinux1-grafana:0.1
     build:
       context: ../
-      dockerfile: ./amazonlinux-grafana/Dockerfile
+      dockerfile: ./amazonlinux1-grafana/Dockerfile
     ports:
       # > Getting Started ｜ Grafana Documentation
       # > http://docs.grafana.org/guides/getting_started/#logging-in-for-the-first-time
@@ -17,7 +17,10 @@ services:
       - "19090:9090"
       # for java app
       - "18080:8080"
-    #  - [docker-compose up したコンテナを起動させ続ける方法 - Qiita](https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167)
+    volumes:
+      # host-dir:container-dir
+      - /tmp:/mactmp
+    # docker-compose up したコンテナを起動させ続ける方法 - Qiita https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167
     tty: true
     environment:
-      COMPOSE_PROJECT_NAME: amazonlinux-grafana
+      COMPOSE_PROJECT_NAME: amazonlinux1-grafana
