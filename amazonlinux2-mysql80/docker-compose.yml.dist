@@ -1,0 +1,21 @@
+version: '2'
+services:
+  # mysql container
+  m:
+    image: xshoji/amazonlinux2-mysql80:0.1
+    build:
+      context: ../
+      dockerfile: ./amazonlinux2-mysql80/Dockerfile
+    ports:
+      - "2222:22"
+      - "13306:3306"
+      - "10050:10050"
+    volumes:
+      # host-dir:container-dir
+      - /tmp:/mactmp
+    tty: true
+    # M1 Docker - Failed to get D-Bus connection: No such file or directory
+    # https://zenn.dev/hashi8084/articles/fdbdb40c50f185
+    privileged: true
+    environment:
+      COMPOSE_PROJECT_NAME: amazonlinux2-mysql80
