@@ -6,6 +6,9 @@ services:
     build:
       context: ../
       dockerfile: ./centos7-aimless/Dockerfile
+    ports:
+      # host-port:container-port, for web app
+      - "18080:8080"
     volumes:
       # host-dir:container-dir
       - /tmp:/mactmp

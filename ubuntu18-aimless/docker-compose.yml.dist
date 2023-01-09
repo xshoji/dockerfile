@@ -2,14 +2,17 @@ version: '2'
 services:
   # container
   c:
-    image: xshoji/ubuntu18:0.1
+    image: xshoji/ubuntu18-aimless:0.1
     build:
       context: ../
-      dockerfile: ./ubuntu18/Dockerfile
+      dockerfile: ./ubuntu18-aimless/Dockerfile
+    ports:
+      # host-port:container-port, for web app
+      - "18080:8080"
     volumes:
       # host-dir:container-dir
       - /tmp:/mactmp
     # docker-compose up したコンテナを起動させ続ける方法 - Qiita https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167
     tty: true
     environment:
-      COMPOSE_PROJECT_NAME: ubuntu18
+      COMPOSE_PROJECT_NAME: ubuntu18-aimless
