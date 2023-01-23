@@ -3,3 +3,6 @@ nbproject
 .swp
 .DS_Store
 */docker-compose.yml
+
+
+!.gitkeep
