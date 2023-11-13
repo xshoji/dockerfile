@@ -19,6 +19,11 @@ docker-compose stop
 ```
 
 # docker command memo
+### Build, Run and enter the container
+
+```
+IMAGE_NAME="nshoji/image_name:0.1"; CONTAINER="test-container1"; docker build . --progress=plain --no-cache -t ${IMAGE_NAME}; docker rm -f ${CONTAINER}; docker run --name ${CONTAINER} -it -d -p 18080:8888 ${IMAGE_NAME}; docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it ${CONTAINER} /bin/bash
+```
 
 ### Bind directory
 
