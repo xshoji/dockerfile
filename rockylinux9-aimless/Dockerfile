@@ -10,6 +10,9 @@ RUN dnf update -y \
   && dnf clean all \
 ;
 
+# Rocky linuxにnodejsインストールするときは以下でインストールする
+# dnf install @nodejs:20
+
 COPY ./commonfiles/bashrc /root/.bashrc
 
 CMD ["/bin/bash"]
