@@ -4,7 +4,7 @@
 
 ```
 $ docker-compose up -d
-$ docker exec -it oraclexe11g /bin/bash
+$ docker exec -it oraclexe11g-d-1 /bin/bash
 # sqlplus system/oracle@xe
 SQL>
 ```
