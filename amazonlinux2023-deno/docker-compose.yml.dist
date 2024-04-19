@@ -1,0 +1,18 @@
+version: '2'
+services:
+  # container
+  c:
+    image: xshoji/amazonlinux2023-deno:0.1
+    build:
+      context: ../
+      dockerfile: ./amazonlinux2023-deno/Dockerfile
+    ports:
+      # host-port:container-port, for web app
+      - "18080:8080"
+    volumes:
+      # host-dir:container-dir
+      - /tmp:/mactmp
+    # docker-compose up したコンテナを起動させ続ける方法 - Qiita https://qiita.com/sekitaka_1214/items/2af73d5dc56c6af8a167
+    tty: true
+    environment:
+      COMPOSE_PROJECT_NAME: amazonlinux2023-deno
