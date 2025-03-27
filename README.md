@@ -28,6 +28,7 @@ IMAGE_NAME="xshoji/image_name:0.1"; CONTAINER="test-container1"; docker build . 
 ### Bind directory
 
 ```
+# -p <HostPort>:<ContainerPort>
 docker run -id --name ${container_name} -p 8888:8080 -v /local/dir/path:/container/dir/path ${docker_image}:${image_version} /bin/bash
 ```
 
